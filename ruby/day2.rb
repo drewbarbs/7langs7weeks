@@ -22,6 +22,8 @@ d = {a:1, b:2, c:3}
 puts "If hash is #{d}, then hash.to_a is #{d.to_a}"
 # As far as array to hash, there's a bump in dimensionality ..., could
 # make hash where keys are array indices, values are array vals
+# Array.inject is like foldl, equivalent haskell would be
+#   foldl (\hash x -> Map.insert (Map.size hash) x hash) Map.empty [1..5]
 l = (1..3).to_a
 h = l.inject({}) { |hash, v| hash[hash.length] = v and hash }
 puts "If list is #{l}, then a hash representation could be #{h}"
@@ -33,7 +35,7 @@ h.each {|k, v| puts "#{k} => #{v+2}"}
 
 # You can use Ruby arrays as stacks. What other common data structures do arrays support?
 #
-# Arrays can also be used as queues: insert at front with a.unsift(newval), remove from back with a.pop
+# Arrays can also be used as queues: insert at front with a.unshift(newval), remove from back with a.pop
 #   or insert at end with a.push(newval) or a <<  newval, then remove from beginning with a.unshift
 #
 # Can also use similar to Haskell lists with a.first, a.drop(1) (which is like the list tail)
